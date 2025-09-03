@@ -4,4 +4,5 @@ export const addNewItem = (name, price) => ({
   type: ITEM_ADDED,
   payload: { name, price }
 });
+
 export const removeItem = (uuid) => ({ type: ITEM_REMOVED, payload: { uuid } });
