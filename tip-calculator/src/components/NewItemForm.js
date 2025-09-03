@@ -1,6 +1,5 @@
 import { Box, Button, Input, Label } from '@twilio-paste/core';
 import { useState } from 'react';
-
 export const NewItemForm = ({ onSubmit }) => {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
@@ -21,7 +20,6 @@ export const NewItemForm = ({ onSubmit }) => {
     setName('');
     setPrice(0);
   };
-
   return (
     <Box marginBottom="space80">
       <form onSubmit={handleSubmit}>
