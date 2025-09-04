@@ -16,4 +16,14 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-export const MenuItemContainer = connect(null, mapDispatchToProps)(MenuItem);
+const mapStateToProps = (state, ownProps) => {
+  const item = state.items.filter((item) => item.uuid === ownProps.uuid)[0];
+  return {
+    total: item.price * item.quantity
+  };
+};
+
+export const MenuItemContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MenuItem);
