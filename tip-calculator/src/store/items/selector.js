@@ -7,7 +7,7 @@ export const selectItemTotal = createSelector(
   [selectItem],
   (item) => item.price * item.quantity
 );
-export const selectTipPercentage = (state) => state.selectTipPercentage;
+export const selectTipPercentage = (state) => state.tipPercentage;
 export const selectSubtotal = createSelector([selectItems], (items) =>
   items.reduce((acc, item) => acc + item.price * item.quantity, 0)
 );
