@@ -5,6 +5,7 @@ import {
   updateItemPrice,
   updateitemQuantity
 } from '../store/items/actions';
+import { selectItemTotal } from '../store/items/selector';
 
 const mapDispatchToProps = (dispatch, ownProps) => {
   return {
@@ -16,12 +17,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
   };
 };
 
-const mapStateToProps = (state, ownProps) => {
-  const item = state.items.filter((item) => item.uuid === ownProps.uuid)[0];
-  return {
-    total: item.price * item.quantity
-  };
-};
+const mapStateToProps = (state, ownProps) => ({
+  total: selectItemTotal(state, ownProps)
+});
 
 export const MenuItemContainer = connect(
   mapStateToProps,
