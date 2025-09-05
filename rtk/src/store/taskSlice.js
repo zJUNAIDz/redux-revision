@@ -1,4 +1,4 @@
-import { createSlice, nanoid } from '@reduxjs/toolkit';
+import { createSlice, createAction, nanoid } from '@reduxjs/toolkit';
 
 const createTask = (title) => ({
   id: nanoid(),
@@ -14,7 +14,18 @@ const initialState = [
 export const taskSlice = createSlice({
   name: 'tasks',
   initialState,
-  add: (state, action) => {
-    state.push(createTask(action.payload));
+  reducers: {
+    add: (state, action) => {
+      state.push(createTask(action.payload));
+    },
+    toggle: (state, action) => {
+      const item = state.find((task) => task.id === action.payload.taskId);
+      item.completed = action.payload.completed;
+    }
   }
 });
+
+//* making actions out of reducer property
+export const taskToggle = createAction('tasks/toggle', (taskId, completed) => ({
+  payload: { taskId, completed }
+}));
